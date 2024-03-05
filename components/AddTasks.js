@@ -40,7 +40,13 @@ export default function AddTasks() {
       >
         <div className="grid grid-cols-1 gap-4 w-full">
           <div className="mb-2">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              style={{
+                backgroundColor: activeColors.primary,
+                color: activeColors.tertiary,
+              }}
+            >
               title
             </label>
             <input
@@ -55,6 +61,10 @@ export default function AddTasks() {
           <label
             htmlFor="message"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            style={{
+              backgroundColor: activeColors.primary,
+              color: activeColors.tertiary,
+            }}
           >
             description
           </label>
@@ -72,6 +82,10 @@ export default function AddTasks() {
             <label
               htmlFor="countries"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              style={{
+                backgroundColor: activeColors.primary,
+                color: activeColors.tertiary,
+              }}
             >
               Assign To
             </label>
@@ -91,6 +105,10 @@ export default function AddTasks() {
             <label
               htmlFor="countries"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              style={{
+                backgroundColor: activeColors.primary,
+                color: activeColors.tertiary,
+              }}
             >
               Status
             </label>

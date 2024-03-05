@@ -1,11 +1,18 @@
-import { removeTask, addTask } from "@/Features/CardSlice";
+import { removeTask, addTask, updateStatus } from "@/Features/CardSlice";
 import { toggleTheme } from "@/Features/ThemeSlice";
 import AddTasks from "@/components/AddTasks";
 import { colors } from "@/themes";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { useRouter } from "next/router";
+library.add(faPenToSquare);
+library.add(faTrash);
 export default function Home() {
+  const router = useRouter();
   const theme = useSelector((state) => state.themes.theme);
   const tasklist = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
@@ -22,12 +29,21 @@ export default function Home() {
     dispatch(removeTask({ id }));
   };
   const [open, setOpen] = useState(false);
+  const [openEmp, setOpenEmp] = useState(false);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
 
+  const statusBtnColor =
+    status === "Pending"
+      ? "red-300"
+      : status === "Working"
+      ? "gray-400"
+      : status === "Complete"
+      ? "green-300"
+      : "blue-500";
   const addtaskHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -43,6 +59,27 @@ export default function Home() {
     setStatus("");
     setAssignedTo("");
   };
+
+  const toggleStatus = (id) => {
+    const currentTask = tasklist.find((task) => task.id === id);
+
+    if (currentTask) {
+      let newStatus;
+      switch (currentTask.status) {
+        case "Pending":
+          newStatus = "Working";
+          break;
+        case "Working":
+          newStatus = "Complete";
+          break;
+
+        default:
+          newStatus = "Pending";
+      }
+
+      dispatch(updateStatus({ id, status: newStatus }));
+    }
+  };
   return (
     <div
       className="h-full"
@@ -56,7 +93,7 @@ export default function Home() {
           backgroundColor: activeColors.secondary,
           color: activeColors.tertiary,
         }}
-        className="w-screen h-full flex items-center justify-center "
+        className="w-screen h-full flex items-center justify-center p-5 "
       >
         <div
           className={`w-11/12 h-5/6 rounded-xl`}
@@ -65,12 +102,12 @@ export default function Home() {
             color: activeColors.tertiary,
           }}
         >
-          {" "}
           <div className="flex items-center justify-between m-5 rounded-2xl">
             <>
               <button
                 type="button"
                 className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+                onClick={() => setOpenEmp(!openEmp)}
               >
                 Employees
               </button>
@@ -90,17 +127,17 @@ export default function Home() {
               </button>
             </>
           </div>
-          {/* <button onClick={handleThemeToggle}>Toggle Theme ({theme})</button> */}
+
           <div
-            className={`grid lg:grid-cols-4 grid-col-1 ${
+            className={`grid lg:grid-cols-4 md:grid-cols-2 grid-col-1 ${
               open ? "blur-sm" : "blur-none"
             }`}
           >
             {Array.isArray(tasklist) &&
               tasklist.map((task) => (
-                <div className="m-5" key={task.id}>
+                <div className="m-5 shadow-lg " key={task.id}>
                   <div
-                    class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                    class="max-w-sm p-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-200"
                     style={{
                       backgroundColor: activeColors.secondary,
                       color: activeColors.tertiary,
@@ -114,38 +151,29 @@ export default function Home() {
                           color: activeColors.tertiary,
                         }}
                       >
-                        {task.id}
+                        {task.title}
                       </h5>
                     </a>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
                       {task.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <a
-                        href="#"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      <button
+                        className={` flex justify-center inline-flex items-center m-1 w-full px-2 py-2 text-sm font-medium text-center text-white ${
+                          task.status === "Pending"
+                            ? "bg-red-500"
+                            : task.status === "Working"
+                            ? "bg-gray-500"
+                            : task.status === "Complete"
+                            ? "bg-green-500"
+                            : "bg-red-600"
+                        } rounded-lg hover:bg-${statusBtnColor} focus:ring-4 focus:outline-none focus:${statusBtnColor} dark:${statusBtnColor} dark:hover:${statusBtnColor} dark:focus:${statusBtnColor}`}
+                        onClick={() => toggleStatus(task.id)}
                       >
                         {task.status}
-                        <svg
-                          class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 10"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                          />
-                        </svg>
-                      </a>
-                      <a
-                        href="#"
-                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
+                      </button>
+
+                      <button class="inline-flex  justify-center items-center px-2 m-1 py-2 text-sm font-medium w-full text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         {task.assignedTo}
                         <svg
                           class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -162,21 +190,26 @@ export default function Home() {
                             d="M1 5h12m0 0L9 1m4 4L9 9"
                           />
                         </svg>
-                      </a>
+                      </button>
                     </div>
-                    <div className="my-2 flex items-center justify-between">
+                    <div className="mt-3 flex items-center justify-between">
                       <button
                         type="button"
-                        className="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+                        style={{
+                          color: activeColors.tertiary,
+                        }}
+                        className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg  dark:shadow-lg  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
                         onClick={() => removeTaskButton(task.id)}
                       >
-                        Delete
+                        <FontAwesomeIcon icon={faTrash} />
                       </button>
                       <button
-                        type="button"
-                        className="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+                        style={{
+                          color: activeColors.tertiary,
+                        }}
+                        className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg  dark:shadow-lg  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
                       >
-                        Edit
+                        <FontAwesomeIcon icon={faPenToSquare} />
                       </button>
                     </div>
                   </div>
@@ -196,6 +229,13 @@ export default function Home() {
           </div>
         ) : null}
       </div>
+      {openEmp ? (
+        <div className="flex items-center justify-center">
+          <div className="absolute ">hello</div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
