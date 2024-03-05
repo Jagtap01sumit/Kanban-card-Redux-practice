@@ -5,7 +5,88 @@ const initialState = {
     {
       id: "1",
       title: "title of the task",
-      description: "description of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "2",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "3",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+      status: "pending",
+      assignedTo: "sumit",
+    },
+    {
+      id: "4",
+      title: "title of the task",
+      description:
+        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
       status: "pending",
       assignedTo: "sumit",
     },
@@ -27,7 +108,7 @@ export const taskSlice = createSlice({
       state.tasks.push(task);
     },
     removeTask: (state, action) => {
-      state.tasks = state.tasks.filter((task) => task.id == !action.payload.id);
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload.id);
     },
   },
 });
