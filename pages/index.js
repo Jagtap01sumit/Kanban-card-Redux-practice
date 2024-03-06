@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import Tasks from "@/components/Tasks";
 import EmployeesTable from "@/components/EmployeesTable";
 import AddEmployees from "@/components/AddEmployees";
+import Change from "@/components/Change";
 library.add(faPenToSquare);
 library.add(faTrash);
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [openEmp, setOpenEmp] = useState(false);
   const [empForm, setEmpForm] = useState(false);
+  const [change, setChange] = useState(false);
 
   return (
     <div
@@ -45,7 +47,7 @@ export default function Home() {
           backgroundColor: activeColors.secondary,
           color: activeColors.tertiary,
         }}
-        className="w-screen h-full flex items-center justify-center p-5 "
+        className="w-full h-full flex items-center justify-center p-5 "
       >
         <div
           className={`w-11/12 h-5/6 rounded-xl`}
@@ -77,6 +79,15 @@ export default function Home() {
                   <FontAwesomeIcon icon={faMoon} />
                 )}
               </button>
+              <button
+                type="button"
+                className={` ${
+                  theme === "dark" ? "text-white" : "text-black"
+                } bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-1 focus:outline-none  shadow-lg  font-medium rounded-lg text-lg text-center px-2  `}
+                onClick={() => setChange(!change)}
+              >
+                Changes
+              </button>
               {openEmp ? (
                 <button
                   type="button"
@@ -98,13 +109,9 @@ export default function Home() {
           </div>
 
           {openEmp ? (
-            // <div className="flex items-center justify-center">
-            //   <div className=" h-screen">
             <EmployeesTable empForm={empForm} />
           ) : (
-            //   </div>
-            // </div>
-            <Tasks open={open} />
+            <Tasks open={open} change={change} />
           )}
         </div>
         {open ? (
@@ -127,6 +134,12 @@ export default function Home() {
             }}
           >
             <AddEmployees empForm={empForm} setEmpForm={setEmpForm} />
+          </div>
+        ) : null}
+
+        {change ? (
+          <div className="absolute top-24 rounded-xl bg-blue-500">
+            <Change />
           </div>
         ) : null}
       </div>

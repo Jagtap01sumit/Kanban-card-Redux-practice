@@ -9,7 +9,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
-export default function Tasks({ open }) {
+export default function Tasks({ open, change }) {
   const router = useRouter();
   const theme = useSelector((state) => state.themes.theme);
   const tasklist = useSelector((state) => state.tasks.tasks);
@@ -81,7 +81,7 @@ export default function Tasks({ open }) {
       {" "}
       <div
         className={`grid lg:grid-cols-4 md:grid-cols-2 grid-col-1 ${
-          open ? "blur-sm" : "blur-none"
+          open || change ? "blur-sm" : "blur-none"
         }`}
       >
         {Array.isArray(tasklist) &&
