@@ -1,31 +1,39 @@
+import { addEmploye } from "@/Features/EmployeesSlice";
+import { colors } from "@/themes";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTask } from "../Features/CardSlice";
-import { colors } from "@/themes";
-export default function AddTasks({ open, setOpen }) {
+
+export default function AddEmployees({ empForm, setEmpForm }) {
   const theme = useSelector((state) => state.themes.theme);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
-  const [assignedTo, setAssignedTo] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [email, setEmail] = useState("");
+  const activeColors = colors[theme];
   const dispatch = useDispatch();
-  const addtaskHandler = (e) => {
+
+  const addEmpHandler = (e) => {
     e.preventDefault();
+    console.log(
+      {
+        name,
+        age,
+        email,
+        designation,
+      },
+      "data data"
+    );
     dispatch(
-      addTask({
-        title: title,
-        description: description,
-        status: status,
-        assignedTo: assignedTo,
+      addEmploye({
+        name,
+        age,
+        email,
+        designation,
       })
     );
-    setTitle("");
-    setDescription("");
-    setStatus("");
-    setAssignedTo("");
-    setOpen(false);
+    console.log(e);
+    setEmpForm(false);
   };
-  let activeColors = colors[theme];
   return (
     <div className="flex flex-col m-5  w-full">
       <div className=" mb-2 text-sm font-medium text-gray-900 dark:text-white flex items-center justify-center w-full">
@@ -33,7 +41,7 @@ export default function AddTasks({ open, setOpen }) {
       </div>
       <form
         className="flex mx-auto w-full "
-        onSubmit={addtaskHandler}
+        onSubmit={addEmpHandler}
         style={{
           backgroundColor: activeColors.primary,
           color: activeColors.tertiary,
@@ -48,82 +56,69 @@ export default function AddTasks({ open, setOpen }) {
                 color: activeColors.tertiary,
               }}
             >
-              title
+              Employe Name
             </label>
             <input
               type="text"
               id="base-input"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
-
-          <label
-            htmlFor="message"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            style={{
-              backgroundColor: activeColors.primary,
-              color: activeColors.tertiary,
-            }}
-          >
-            description
-          </label>
-          <textarea
-            id="message"
-            rows={4}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Leave a comment..."
-            defaultValue={""}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-
           <div className="mb-2">
             <label
-              htmlFor="countries"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               style={{
                 backgroundColor: activeColors.primary,
                 color: activeColors.tertiary,
               }}
             >
-              Assign To
+              Age
             </label>
-            <select
-              id="countries"
+            <input
+              type="integer"
+              id="base-input"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              value={assignedTo}
-              onChange={(e) => setAssignedTo(e.target.value)}
-            >
-              <option>emp1</option>
-              <option>Emp2</option>
-              <option>Emp3</option>
-              <option>Emp3t</option>
-            </select>
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
           </div>
           <div className="mb-2">
             <label
-              htmlFor="countries"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               style={{
                 backgroundColor: activeColors.primary,
                 color: activeColors.tertiary,
               }}
             >
-              Status
+              Designation
             </label>
-            <select
-              id="countries"
+            <input
+              type="text"
+              id="base-input"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
+              value={designation}
+              onChange={(e) => setDesignation(e.target.value)}
+            />
+          </div>
+          <div className="mb-2">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              style={{
+                backgroundColor: activeColors.primary,
+                color: activeColors.tertiary,
+              }}
             >
-              <option>Pending</option>
-              <option>Completed</option>
-              <option>Working</option>
-              <option>Urgent</option>
-            </select>
+              email
+            </label>
+            <input
+              type="text"
+              id="base-input"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <button

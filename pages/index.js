@@ -11,6 +11,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import Tasks from "@/components/Tasks";
+import EmployeesTable from "@/components/EmployeesTable";
+import AddEmployees from "@/components/AddEmployees";
 library.add(faPenToSquare);
 library.add(faTrash);
 export default function Home() {
@@ -59,8 +61,9 @@ export default function Home() {
                 className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
                 onClick={() => setOpenEmp(!openEmp)}
               >
-                Employees
+                {openEmp ? "Tasks" : "Employees"}
               </button>
+
               <button
                 type="button"
                 className={` ${
@@ -95,10 +98,12 @@ export default function Home() {
           </div>
 
           {openEmp ? (
-            <div className="flex items-center justify-center">
-              <div className=" ">hello</div>
-            </div>
+            // <div className="flex items-center justify-center">
+            //   <div className=" h-screen">
+            <EmployeesTable empForm={empForm} />
           ) : (
+            //   </div>
+            // </div>
             <Tasks open={open} />
           )}
         </div>
@@ -110,7 +115,18 @@ export default function Home() {
               color: activeColors.tertiary,
             }}
           >
-            <AddTasks />
+            <AddTasks open={open} setOpen={setOpen} />
+          </div>
+        ) : null}
+        {empForm ? (
+          <div
+            className="absolute top-40 justify-center lg:w-2/5 w-3/5 flex  rounded-3xl"
+            style={{
+              backgroundColor: activeColors.primary,
+              color: activeColors.tertiary,
+            }}
+          >
+            <AddEmployees empForm={empForm} setEmpForm={setEmpForm} />
           </div>
         ) : null}
       </div>
