@@ -6,7 +6,7 @@ import pendingTaskReducer from "@/Features/PendingTaskSlice";
 
 const store = configureStore({
   reducer: {
-    tasks: taskReducer, // Assuming tasks is the slice managed by taskReducer
+    tasks: taskReducer,
     themes: themeReducer,
     employees: employeesReducer,
     pendingtasks: pendingTaskReducer,
