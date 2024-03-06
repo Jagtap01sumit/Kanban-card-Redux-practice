@@ -102,6 +102,7 @@ export const taskSlice = createSlice({
     removeTask: (state, action) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload.id);
     },
+
     updateStatus: (state, action) => {
       const { id, status } = action.payload;
       const taskToUpdate = state.tasks.find((task) => task.id === id);

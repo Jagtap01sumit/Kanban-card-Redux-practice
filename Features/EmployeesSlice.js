@@ -11,14 +11,14 @@ const initialState = {
     },
     {
       id: 2,
-      name: "John",
+      name: "Sumit",
       age: "32",
       email: "john@example.com",
       designation: "Web Developer",
     },
     {
       id: 3,
-      name: "John",
+      name: "Amit",
       age: "32",
       email: "john@example.com",
       designation: "Web Developer",

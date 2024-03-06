@@ -16,6 +16,9 @@ export default function Change() {
 
   const removeTaskButton = () => {};
   console.log(tasklist.length);
+
+  const pendingTasks = useSelector((state) => state.pendingtasks.pendingTasks);
+  console.log(pendingTasks);
   return (
     <div className="w-full h-full">
       <div className="grid lg:grid-cols-3 sm:grid-cols-1 w-full">
@@ -67,7 +70,7 @@ export default function Change() {
         </div>
         <div className="p-2 ">
           <h1 className="flex items-center justify-center font-bold">
-            All Tasks
+            Pending
           </h1>
           {Array.isArray(tasklist) &&
             tasklist.map((task) => (

@@ -9,6 +9,7 @@ export default function AddTasks({ open, setOpen }) {
   const [status, setStatus] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
   const dispatch = useDispatch();
+  const employees = useSelector((state) => state.employees.employees);
   const addtaskHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -96,10 +97,9 @@ export default function AddTasks({ open, setOpen }) {
               value={assignedTo}
               onChange={(e) => setAssignedTo(e.target.value)}
             >
-              <option>emp1</option>
-              <option>Emp2</option>
-              <option>Emp3</option>
-              <option>Emp3t</option>
+              {employees.map((emp) => (
+                <option key={emp.id}>{emp.name}</option>
+              ))}
             </select>
           </div>
           <div className="mb-2">
