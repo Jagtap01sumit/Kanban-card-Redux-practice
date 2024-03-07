@@ -31,42 +31,41 @@ export default function Change() {
             Todo...
           </h1>
           {pending.map((task) => (
-            <div className=" shadow-lg " key={task.id}>
-              <div
-                class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100"
-                style={{
-                  backgroundColor: activeColors.secondary,
-                  color: activeColors.tertiary,
-                }}
-              >
-                <section>
-                  <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                    style={{
-                      backgroundColor: activeColors.secondary,
-                      color: activeColors.tertiary,
-                    }}
-                  >
-                    {task.title}
-                  </h5>
+            <div
+              key={task.id}
+              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow  hover:shadow-sm hover:shadow-white hover:scale-105 dark:border-gray-100 transition-transform duration-300"
+              style={{
+                backgroundColor: activeColors.secondary,
+                color: activeColors.tertiary,
+              }}
+            >
+              <section>
+                <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                  style={{
+                    backgroundColor: activeColors.secondary,
+                    color: activeColors.tertiary,
+                  }}
+                >
+                  {task.title}
+                </h5>
 
-                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
-                    {task.description}
-                  </p>
-                </section>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
+                  {task.description}
+                </p>
+              </section>
 
-                <div className="mt-3 flex flex-col items-center justify-end">
-                  <button
-                    type="button"
-                    style={{
-                      color: activeColors.tertiary,
-                    }}
-                    className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
-                    onClick={() => removeTaskButton(task.id)}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </div>
+              <div className="mt-3 flex flex-col items-center justify-end">
+                <button
+                  type="button"
+                  style={{
+                    color: activeColors.tertiary,
+                  }}
+                  className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
+                  onClick={() => removeTaskButton(task.id)}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
               </div>
             </div>
           ))}
@@ -76,42 +75,41 @@ export default function Change() {
             In Progress
           </h1>
           {working.map((task) => (
-            <div className=" shadow-lg " key={task.id}>
-              <div
-                class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100"
-                style={{
-                  backgroundColor: activeColors.secondary,
-                  color: activeColors.tertiary,
-                }}
-              >
-                <section>
-                  <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                    style={{
-                      backgroundColor: activeColors.secondary,
-                      color: activeColors.tertiary,
-                    }}
-                  >
-                    {task.title}
-                  </h5>
+            <div
+              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100 hover:shadow-sm hover:shadow-white hover:scale-105 transition-transform duration-300"
+              key={task.id}
+              style={{
+                backgroundColor: activeColors.secondary,
+                color: activeColors.tertiary,
+              }}
+            >
+              <section>
+                <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                  style={{
+                    backgroundColor: activeColors.secondary,
+                    color: activeColors.tertiary,
+                  }}
+                >
+                  {task.title}
+                </h5>
 
-                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
-                    {task.description}
-                  </p>
-                </section>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
+                  {task.description}
+                </p>
+              </section>
 
-                <div className="mt-3 flex flex-col items-center justify-end">
-                  <button
-                    type="button"
-                    style={{
-                      color: activeColors.tertiary,
-                    }}
-                    className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
-                    onClick={() => removeTaskButton(task.id)}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </div>
+              <div className="mt-3 flex flex-col items-center justify-end">
+                <button
+                  type="button"
+                  style={{
+                    color: activeColors.tertiary,
+                  }}
+                  className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
+                  onClick={() => removeTaskButton(task.id)}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
               </div>
             </div>
           ))}
@@ -121,42 +119,41 @@ export default function Change() {
             Completed
           </h1>
           {complete.map((task) => (
-            <div className=" shadow-lg " key={task.id}>
-              <div
-                class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100"
-                style={{
-                  backgroundColor: activeColors.secondary,
-                  color: activeColors.tertiary,
-                }}
-              >
-                <section>
-                  <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                    style={{
-                      backgroundColor: activeColors.secondary,
-                      color: activeColors.tertiary,
-                    }}
-                  >
-                    {task.title}
-                  </h5>
+            <div
+              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100 hover:shadow-sm hover:shadow-white hover:scale-105 transition-transform duration-300"
+              key={task.id}
+              style={{
+                backgroundColor: activeColors.secondary,
+                color: activeColors.tertiary,
+              }}
+            >
+              <section>
+                <h5
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                  style={{
+                    backgroundColor: activeColors.secondary,
+                    color: activeColors.tertiary,
+                  }}
+                >
+                  {task.title}
+                </h5>
 
-                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
-                    {task.description}
-                  </p>
-                </section>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
+                  {task.description}
+                </p>
+              </section>
 
-                <div className="mt-3 flex flex-col items-center justify-end">
-                  <button
-                    type="button"
-                    style={{
-                      color: activeColors.tertiary,
-                    }}
-                    className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
-                    onClick={() => removeTaskButton(task.id)}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </div>
+              <div className="mt-3 flex flex-col items-center justify-end">
+                <button
+                  type="button"
+                  style={{
+                    color: activeColors.tertiary,
+                  }}
+                  className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800   font-medium rounded-lg text-sm px-5 py-2.5 text-center   "
+                  onClick={() => removeTaskButton(task.id)}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
               </div>
             </div>
           ))}

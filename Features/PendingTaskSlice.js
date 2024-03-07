@@ -9,10 +9,9 @@ export const pendingTaskSlice = createSlice({
   initialState,
   reducers: {
     filterPendingTasks: (state, action) => {
-      // Filtering tasks from the original task state based on status "Pending"
       const pendingTasks = state.tasks.filter((t) => t.status === "Pending");
       console.log(pendingTasks, "ppp");
-      // Updating the state with the filtered pending tasks
+
       state.pendingTasks = pendingTasks;
     },
   },
