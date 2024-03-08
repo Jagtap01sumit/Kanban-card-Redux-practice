@@ -176,7 +176,7 @@ export default function Tasks({ open, change }) {
               </div>
               {editTask && editTaskId === task.id && (
                 <div
-                  className="blur-none absolute top-20 justify-center lg:w-2/5 w-3/5 flex  rounded-3xl "
+                  className="w-full absolute top-20 justify-center lg:w-2/5 md:w-3/5 flex  rounded-3xl "
                   style={{
                     backgroundColor: activeColors.primary,
                     color: activeColors.tertiary,

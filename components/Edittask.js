@@ -54,7 +54,7 @@ export default function Edittask({ setEditTask, id }) {
   };
 
   return (
-    <div className="w-full p-10 flex items-center justify-center border border-black rounded-3xl  transition-opacity duration-300 ease-in-out">
+    <div className="w-full lg:p-10 md:p-8 p-5 flex items-center justify-center border border-black rounded-3xl  transition-opacity duration-300 ease-in-out">
       {task && (
         <div className="flex flex-col m-5 w-full">
           <div>
