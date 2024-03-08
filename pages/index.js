@@ -56,55 +56,59 @@ export default function Home() {
             color: activeColors.tertiary,
           }}
         >
-          <div className="flex items-center justify-between m-5 rounded-2xl">
+          <div className="flex items-center lg:justify-center justify-between m-5 rounded-2xl flex-col lg:flex-row md:flex-row">
             <>
-              <button
-                type="button"
-                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
-                onClick={() => setOpenEmp(!openEmp)}
-              >
-                {openEmp ? "Tasks" : "Employees"}
-              </button>
+              <div className="flex w-full items-between justify-between mx-5">
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+                  onClick={() => setOpenEmp(!openEmp)}
+                >
+                  {openEmp ? "Tasks" : "Employees"}
+                </button>
 
-              <button
-                type="button"
-                className={` ${
-                  theme === "dark" ? "text-white" : "text-black"
-                } bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-1 focus:outline-none  shadow-lg  font-medium rounded-lg text-lg text-center px-2  `}
-                onClick={handleThemeToggle}
-              >
-                {theme === "dark" ? (
-                  <FontAwesomeIcon icon={faSun} />
+                <button
+                  type="button"
+                  className={` ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-1 focus:outline-none  shadow-lg  font-medium rounded-lg text-lg text-center px-2 mb-4 lg:mb-0 md:mb-0 `}
+                  onClick={handleThemeToggle}
+                >
+                  {theme === "dark" ? (
+                    <FontAwesomeIcon icon={faSun} />
+                  ) : (
+                    <FontAwesomeIcon icon={faMoon} />
+                  )}
+                </button>
+              </div>
+              <div className="flex w-full items-between justify-between mx-5">
+                <button
+                  type="button"
+                  className={` ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  } bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-1 focus:outline-none  shadow-lg  font-medium rounded-lg text-lg text-center px-2  `}
+                  onClick={() => setChange(!change)}
+                >
+                  Changes
+                </button>
+                {openEmp ? (
+                  <button
+                    type="button"
+                    className="dark:text-white text-black bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    onClick={() => setEmpForm(!empForm)}
+                  >
+                    Add Emplyee
+                  </button>
                 ) : (
-                  <FontAwesomeIcon icon={faMoon} />
+                  <button
+                    type="button"
+                    className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    onClick={() => setOpen(!open)}
+                  >
+                    Add Task
+                  </button>
                 )}
-              </button>
-              <button
-                type="button"
-                className={` ${
-                  theme === "dark" ? "text-white" : "text-black"
-                } bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-1 focus:outline-none  shadow-lg  font-medium rounded-lg text-lg text-center px-2  `}
-                onClick={() => setChange(!change)}
-              >
-                Changes
-              </button>
-              {openEmp ? (
-                <button
-                  type="button"
-                  className="dark:text-white text-black bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                  onClick={() => setEmpForm(!empForm)}
-                >
-                  Add Emplyee
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                  onClick={() => setOpen(!open)}
-                >
-                  Add Task
-                </button>
-              )}
+              </div>
             </>
           </div>
 
