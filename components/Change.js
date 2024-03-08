@@ -13,8 +13,11 @@ export default function Change() {
   const tasklist = useSelector((state) => state.tasks.tasks);
   const theme = useSelector((state) => state.themes.theme);
   const activeColors = colors[theme];
-
-  const removeTaskButton = () => {};
+  const dispatch = useDispatch();
+  const removeTaskButton = (id) => {
+    console.log(id);
+    dispatch(removeTask({ id }));
+  };
   console.log(tasklist.length);
   const pending = tasklist.filter((item) => item.status === "Pending");
   const complete = tasklist.filter((item) => item.status === "Complete");
@@ -33,7 +36,7 @@ export default function Change() {
           {pending.map((task) => (
             <div
               key={task.id}
-              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow  hover:shadow-sm hover:shadow-white hover:scale-105 dark:border-gray-100 transition-transform duration-300"
+              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow  hover:shadow-lg shadow-white hover:scale-110 dark:border-gray-100 transform duration-500"
               style={{
                 backgroundColor: activeColors.secondary,
                 color: activeColors.tertiary,
@@ -76,8 +79,8 @@ export default function Change() {
           </h1>
           {working.map((task) => (
             <div
-              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100 hover:shadow-sm hover:shadow-white hover:scale-105 transition-transform duration-300"
               key={task.id}
+              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow  hover:shadow-lg shadow-white hover:scale-110 dark:border-gray-100 transform duration-500"
               style={{
                 backgroundColor: activeColors.secondary,
                 color: activeColors.tertiary,
@@ -120,8 +123,8 @@ export default function Change() {
           </h1>
           {complete.map((task) => (
             <div
-              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100 hover:shadow-sm hover:shadow-white hover:scale-105 transition-transform duration-300"
               key={task.id}
+              class="max-w-sm p-3 flex  m-3 bg-white border  rounded-lg shadow  hover:shadow-lg shadow-white hover:scale-110 dark:border-gray-100 transform duration-500"
               style={{
                 backgroundColor: activeColors.secondary,
                 color: activeColors.tertiary,

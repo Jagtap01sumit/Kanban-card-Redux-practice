@@ -9,6 +9,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { useRouter } from "next/router";
+import Edittask from "./Edittask";
 export default function Tasks({ open, change }) {
   const router = useRouter();
   const theme = useSelector((state) => state.themes.theme);
@@ -31,6 +32,8 @@ export default function Tasks({ open, change }) {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
+  const [editTask, setEditTask] = useState(false);
+  const [editTaskId, seteditTaskId] = useState("");
 
   const statusBtnColor =
     status === "Pending"
@@ -75,6 +78,12 @@ export default function Tasks({ open, change }) {
 
       dispatch(updateStatus({ id, status: newStatus }));
     }
+  };
+  const editTasks = (e, id) => {
+    e.preventDefault();
+    setEditTask(true);
+    console.log(id);
+    seteditTaskId(id);
   };
   return (
     <div>
@@ -158,12 +167,24 @@ export default function Tasks({ open, change }) {
                     style={{
                       color: activeColors.tertiary,
                     }}
+                    onClick={(e) => editTasks(e, task.id)}
                     className="text-white bg-gradient-to-r  hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg  dark:shadow-lg  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
                   >
                     <FontAwesomeIcon icon={faPenToSquare} />
                   </button>
                 </div>
               </div>
+              {editTask && editTaskId === task.id && (
+                <div
+                  className="blur-none absolute top-20 justify-center lg:w-2/5 w-3/5 flex  rounded-3xl "
+                  style={{
+                    backgroundColor: activeColors.primary,
+                    color: activeColors.tertiary,
+                  }}
+                >
+                  <Edittask id={editTaskId} setEditTask={setEditTask} />
+                </div>
+              )}
             </div>
           ))}
       </div>

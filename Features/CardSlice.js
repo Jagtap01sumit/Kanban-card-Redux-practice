@@ -111,8 +111,20 @@ export const taskSlice = createSlice({
         taskToUpdate.status = status;
       }
     },
+    updateTask: (state, action) => {
+      const { id, title, description, assignedTo, status } = action.payload;
+
+      const currenttask = state.tasks.find((task) => task.id === id);
+      if (currenttask) {
+        currenttask.title = title;
+        currenttask.description = description;
+        currenttask.assignedTo = assignedTo;
+        currenttask.status = status;
+      }
+    },
   },
 });
-export const { addTask, removeTask, updateStatus } = taskSlice.actions;
+export const { addTask, removeTask, updateStatus, updateTask } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
