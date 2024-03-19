@@ -131,7 +131,7 @@ export default function Home() {
         ) : null}
         {empForm ? (
           <div
-            className="absolute top-40 justify-center lg:w-2/5 w-3/5 flex  rounded-3xl"
+            className="absolute top-40 justify-center lg:w-2/5 w-3/5 flex border rounded-3xl"
             style={{
               backgroundColor: activeColors.primary,
               color: activeColors.tertiary,
@@ -142,7 +142,7 @@ export default function Home() {
         ) : null}
 
         {change ? (
-          <div className="absolute top-24 rounded-xl bg-blue-500">
+          <div className="absolute top-24 rounded-xl bg-blue-400">
             <Change />
           </div>
         ) : null}

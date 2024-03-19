@@ -35,9 +35,9 @@ export default function AddEmployees({ empForm, setEmpForm }) {
     setEmpForm(false);
   };
   return (
-    <div className="flex flex-col m-5  w-full">
-      <div className=" mb-2 text-sm font-medium text-gray-900 dark:text-white flex items-center justify-center w-full">
-        Add Task
+    <div className="flex flex-col m-5  w-full ">
+      <div className=" mb-2 text-sm font-medium text-gray-900 dark:text-white  flex items-center justify-center w-full">
+        Add New Employee
       </div>
       <form
         className="flex mx-auto w-full "

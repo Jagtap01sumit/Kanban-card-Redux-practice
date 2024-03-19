@@ -42,8 +42,25 @@ export const employeesSlice = createSlice({
       };
       state.employees.push(empdata);
     },
+    removeEmploye: (state, action) => {
+      const idToRemove = action.payload;
+      console.log(idToRemove);
+      state.employees = state.employees.filter((emp) => emp.id !== idToRemove);
+    },
+    updateEmployeData: (state, action) => {
+      const { id, name, age, designation, email } = action.payload;
+      console.log(action.payload);
+      const currentemp = state.employees.find((emp) => emp.id === id);
+      if (currentemp) {
+        currentemp.name = name;
+        currentemp.age = age;
+        currentemp.email = email;
+        currentemp.designation = designation;
+      }
+    },
   },
 });
 
-export const { addEmploye } = employeesSlice.actions;
+export const { addEmploye, removeEmploye, updateEmployeData } =
+  employeesSlice.actions;
 export default employeesSlice.reducer;
