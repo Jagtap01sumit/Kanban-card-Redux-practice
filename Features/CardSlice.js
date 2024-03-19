@@ -4,83 +4,83 @@ const initialState = {
   tasks: [
     {
       id: "1",
-      title: "title of the task",
+      title: "Task 1",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 1. It includes all the information necessary to understand the task and its requirements. ",
       status: "Pending",
-      assignedTo: "sumit",
+      assignedTo: "Sumit",
     },
     {
       id: "2",
-      title: "title of the task",
+      title: "Task 2",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 2. It includes all the information necessary to understand the task and its requirements.",
       status: "Pending",
-      assignedTo: "sumit",
+      assignedTo: "John",
     },
     {
       id: "3",
-      title: "title of the task",
+      title: "Task 3",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 3. It includes all the information necessary to understand the task and its requirements. ",
       status: "Working",
-      assignedTo: "sumit",
+      assignedTo: "Amit",
     },
     {
       id: "4",
-      title: "title of the task",
+      title: "Task 4",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 4. It includes all the information necessary to understand the task and its requirements. ",
       status: "Complete",
-      assignedTo: "sumit",
+      assignedTo: "Sumit",
     },
     {
       id: "5",
-      title: "title of the task",
+      title: "Task 5",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 5. It includes all the information necessary to understand the task and its requirements.",
       status: "Pending",
-      assignedTo: "sumit",
+      assignedTo: "John",
     },
     {
       id: "6",
-      title: "title of the task",
+      title: "Task 6",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 6. It includes all the information necessary to understand the task and its requirements.",
       status: "Working",
-      assignedTo: "sumit",
+      assignedTo: "Amit",
     },
     {
       id: "7",
-      title: "title of the task",
+      title: "Task 7",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 7. It includes all the information necessary to understand the task and its requirements.",
       status: "Complete",
-      assignedTo: "sumit",
+      assignedTo: "Sumit",
     },
     {
       id: "8",
-      title: "title of the task",
+      title: "Task 8",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 8. It includes all the information necessary to understand the task and its requirements.",
       status: "Pending",
-      assignedTo: "sumit",
+      assignedTo: "John",
     },
     {
       id: "9",
-      title: "title of the task",
+      title: "Task 9",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 9. It includes all the information necessary to understand the task and its requirements.",
       status: "Complete",
-      assignedTo: "sumit",
+      assignedTo: "Amit",
     },
     {
       id: "10",
-      title: "title of the task",
+      title: "Task 10",
       description:
-        "description of the task description of the taskdescription of the taskdescription of the taskdescription of the task",
+        "This is a detailed description of Task 10. It includes all the information necessary to understand the task and its requirements.",
       status: "Working",
-      assignedTo: "sumit",
+      assignedTo: "Sumit",
     },
   ],
 };
