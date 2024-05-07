@@ -97,7 +97,7 @@ export default function Tasks({ open, change }) {
           tasklist.map((task) => (
             <div className="m-5 shadow-lg " key={task.id}>
               <div
-                class="max-w-sm p-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100"
+                className="max-w-sm p-3 bg-white border  rounded-lg shadow dark:bg-gray-800 dark:border-gray-100"
                 style={{
                   backgroundColor: activeColors.secondary,
                   color: activeColors.tertiary,
@@ -105,7 +105,7 @@ export default function Tasks({ open, change }) {
               >
                 <a href="#">
                   <h5
-                    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                    className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                     style={{
                       backgroundColor: activeColors.secondary,
                       color: activeColors.tertiary,
@@ -114,7 +114,7 @@ export default function Tasks({ open, change }) {
                     {task.title}
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-wrap">
                   {task.description}
                 </p>
                 <div className="flex items-center justify-between">
@@ -133,10 +133,10 @@ export default function Tasks({ open, change }) {
                     {task.status}
                   </button>
 
-                  <button class="inline-flex  justify-center items-center px-2 m-1 py-2 text-sm font-medium w-full text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  <button className="inline-flex  justify-center items-center px-2 m-1 py-2 text-sm font-medium w-full text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     {task.assignedTo}
                     <svg
-                      class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                      className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -144,9 +144,9 @@ export default function Tasks({ open, change }) {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M1 5h12m0 0L9 1m4 4L9 9"
                       />
                     </svg>

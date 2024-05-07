@@ -27,7 +27,7 @@ export default function Home() {
   const handleThemeToggle = () => {
     dispatch(toggleTheme());
   };
-  console.log(tasklist);
+  // console.log(tasklist);
 
   const [open, setOpen] = useState(false);
   const [openEmp, setOpenEmp] = useState(false);

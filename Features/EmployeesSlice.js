@@ -49,7 +49,7 @@ export const employeesSlice = createSlice({
     },
     updateEmployeData: (state, action) => {
       const { id, name, age, designation, email } = action.payload;
-      console.log(action.payload);
+      // console.log(action.payload);
       const currentemp = state.employees.find((emp) => emp.id === id);
       if (currentemp) {
         currentemp.name = name;

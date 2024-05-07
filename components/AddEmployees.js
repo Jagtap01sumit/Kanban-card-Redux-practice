@@ -14,15 +14,15 @@ export default function AddEmployees({ empForm, setEmpForm }) {
 
   const addEmpHandler = (e) => {
     e.preventDefault();
-    console.log(
-      {
-        name,
-        age,
-        email,
-        designation,
-      },
-      "data data"
-    );
+    // console.log(
+    //   {
+    //     name,
+    //     age,
+    //     email,
+    //     designation,
+    //   },
+    //   "data data"
+    // );
     dispatch(
       addEmploye({
         name,
